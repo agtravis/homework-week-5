@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <style>
+      .period {
+        /*style the paragraph not the span*/
+        height: 50px;
+        border: 1px solid black;
+        margin-bottom: 5px;
+      }
+      .past {
+        background-color: red;
+      }
+      .present {
+        background-color: blue;
+      }
+      .future {
+        background-color: green;
+      }
+    </style>
   </head>
   <body>
     <h1>Moment test</h1>
@@ -15,24 +32,27 @@
     <input type="text" id="date-input" placeholder="DD" />
     <button id="custom-date">Custom Date</button>
     <p id="date"></p>
-    <p id="today9"></p>
-    <p id="today10"></p>
-    <button id="make-plans">Make Plans</button><br />
-    <button id="send">Send</button><button id="get">Get</button>
+    <p id="today9" class="period"></p>
+    <!--make this a span inside a paragraph-->
+    <p id="today10" class="period"></p>
+    <p id="today11" class="period"></p>
+    <p id="today12" class="period"></p>
+    <p id="today13" class="period"></p>
+    <p id="today14" class="period"></p>
+    <p id="today15" class="period"></p>
+    <p id="today16" class="period"></p>
+    <p id="today17" class="period"></p>
     <script src="https://momentjs.com/downloads/moment.min.js"></script>
     <script>
       var displayDate = document.getElementById('date');
       var prev = document.getElementById('prev');
       var next = document.getElementById('next');
-      var send = document.getElementById('send');
-      var get = document.getElementById('get');
-      var makePlans = document.getElementById('make-plans');
-      var today9 = document.getElementById('today9');
-      var today10 = document.getElementById('today10');
       var yearInput = document.getElementById('year-input');
       var monthInput = document.getElementById('month-input');
       var dateInput = document.getElementById('date-input');
       var customDateButton = document.getElementById('custom-date');
+
+      var periods = document.getElementsByClassName('period');
 
       var m = moment();
 
@@ -45,7 +65,9 @@
 
       displayDate.textContent = m.toString();
 
+      setKey();
       getKey();
+      setColors();
 
       prev.addEventListener('click', function() {
         m.subtract(1, 'days');
@@ -71,75 +93,118 @@
         getKey();
       });
 
-      makePlans.addEventListener('click', function() {
-        momentObject.nine = prompt('plans for 9');
-        momentObject.ten = prompt('plans for 10');
-      });
-
-      send.addEventListener('click', function() {
-        localStorage.setItem(key, JSON.stringify(momentObject));
-        getKey();
-      });
-
-      get.addEventListener('click', function() {
-        momentObject = JSON.parse(localStorage.getItem(key));
-        alert(
-          'at 9 am you have to ' +
-            momentObject.nine +
-            ' and at 10am you have to ' +
-            momentObject.ten
-        );
-      });
-
       function setKey() {
         years = m.get('year').toString();
         months =
           getPadding((m.month() + 1).toString()) + (m.month() + 1).toString();
         date = getPadding(m.date().toString()) + m.date().toString();
         key = years + months + date;
+        setColors();
+      }
+
+      function setColors() {
+        var currentMoment = moment();
+        var currentHour = currentMoment.hour();
+        for (var i = 0; i < periods.length; ++i) {
+          var idNum = periods[i].id;
+          idNum = parseInt(idNum.slice(5));
+          if (idNum === currentHour) {
+            periods[i].classList.add('present');
+          } else if (idNum < currentHour) {
+            periods[i].classList.add('past');
+          } else {
+            periods[i].classList.add('future');
+          }
+        }
       }
 
       function getKey() {
         var plan = JSON.parse(localStorage.getItem(key));
         if (!plan) {
-          today9.textContent = 'no plans';
-          today10.textContent = 'no plans';
-        } else {
-          if (!plan.nine) {
-            today9.textContent = 'no plans';
-          } else {
-            today9.textContent = plan.nine;
+          for (var i = 0; i < periods.length; ++i) {
+            var el = 'today' + (i + 9);
+            document.getElementById(el).textContent = '';
           }
-          if (!plan.ten) {
-            today10.textContent = 'no plans';
+        } else {
+          // for (var i = 0; i < periods.length; ++i) {
+          //   var el = 'today' + (i + 9);
+          //   if (!plan['today' + (i + 9)]) {
+          //     el.textContent = '';
+          //   } else {
+          //     el.textContent = plan['today' + (i + 9)];
+          //   }
+          // }
+          if (!plan.today9) {
+            today9.textContent = '';
           } else {
-            today10.textContent = plan.ten;
+            today9.textContent = plan.today9;
+          }
+          if (!plan.today10) {
+            today10.textContent = '';
+          } else {
+            today10.textContent = plan.today10;
+          }
+          if (!plan.today11) {
+            today11.textContent = '';
+          } else {
+            today11.textContent = plan.today11;
+          }
+          if (!plan.today12) {
+            today12.textContent = '';
+          } else {
+            today12.textContent = plan.today12;
+          }
+          if (!plan.today13) {
+            today13.textContent = '';
+          } else {
+            today13.textContent = plan.today13;
+          }
+          if (!plan.today14) {
+            today14.textContent = '';
+          } else {
+            today14.textContent = plan.today14;
+          }
+          if (!plan.today15) {
+            today15.textContent = '';
+          } else {
+            today15.textContent = plan.today15;
+          }
+          if (!plan.today16) {
+            today16.textContent = '';
+          } else {
+            today16.textContent = plan.today16;
+          }
+          if (!plan.today17) {
+            today17.textContent = '';
+          } else {
+            today17.textContent = plan.today17;
           }
         }
       }
 
-      today9.addEventListener('click', function() {
-        //set the key string to the date
-        setKey();
-        //get the user's input
-        var newInput = prompt('change it');
-        //set the property of the momentObject to be the user's input
-        momentObject.nine = newInput;
-        momentObject.ten = today10.textContent;
-        //set the storage object to be the current moment object
-        localStorage.setItem(key, JSON.stringify(momentObject));
-        //get the day planner entirely from storage
-        getKey();
-      });
+      for (var i = 0; i < periods.length; ++i) {
+        periods[i].addEventListener('click', function(event) {
+          clickOnAPeriod(this.id);
+        });
+      }
 
-      today10.addEventListener('click', function() {
+      function clickOnAPeriod(id) {
         setKey();
-        var newInput = prompt('change it');
-        momentObject.ten = newInput;
-        momentObject.nine = today9.textContent;
+        for (var i = 0; i < periods.length; ++i) {
+          if (periods[i].id === id) {
+            document.getElementById(id).textContent = prompt('what now?');
+            momentObject['today' + (i + 9)] = document.getElementById(
+              id
+            ).textContent;
+          } else {
+            momentObject['today' + (i + 9)] = document.getElementById(
+              periods[i].id
+            ).textContent;
+          }
+        }
         localStorage.setItem(key, JSON.stringify(momentObject));
         getKey();
-      });
+      }
 
       function getPadding(num) {
         return num < 10 ? '0' : '';
