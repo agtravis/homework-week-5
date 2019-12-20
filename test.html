@@ -81,15 +81,15 @@
         getKey();
       });
 
-      //   get.addEventListener('click', function() {
-      //     momentObject = JSON.parse(localStorage.getItem(key));
-      //     alert(
-      //       'at 9 am you have to ' +
-      //         momentObject.nine +
-      //         ' and at 10am you have to ' +
-      //         momentObject.ten
-      //     );
-      //   });
+      get.addEventListener('click', function() {
+        momentObject = JSON.parse(localStorage.getItem(key));
+        alert(
+          'at 9 am you have to ' +
+            momentObject.nine +
+            ' and at 10am you have to ' +
+            momentObject.ten
+        );
+      });
 
       function setKey() {
         years = m.get('year').toString();
