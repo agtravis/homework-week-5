@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Moment test</h1>
+    <button id="prev">Previous</button>
+    <button id="next">Next</button><br />
+    <input type="text" id="year-input" placeholder="YYYY" />
+    <input type="text" id="month-input" placeholder="MM" />
+    <input type="text" id="date-input" placeholder="DD" />
+    <button id="custom-date">Custom Date</button>
+    <p id="date"></p>
+    <p id="today9"></p>
+    <p id="today10"></p>
+    <button id="make-plans">Make Plans</button><br />
+    <button id="send">Send</button><button id="get">Get</button>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script>
+      var displayDate = document.getElementById('date');
+      var prev = document.getElementById('prev');
+      var next = document.getElementById('next');
+      var send = document.getElementById('send');
+      var get = document.getElementById('get');
+      var makePlans = document.getElementById('make-plans');
+      var today9 = document.getElementById('today9');
+      var today10 = document.getElementById('today10');
+      var yearInput = document.getElementById('year-input');
+      var monthInput = document.getElementById('month-input');
+      var dateInput = document.getElementById('date-input');
+      var customDateButton = document.getElementById('custom-date');
+
+      var m = moment();
+
+      var years = m.get('year').toString();
+      var months = (m.month() + 1).toString();
+      var date = m.date().toString();
+      var key = years + months + date;
+
+      var momentObject = {};
+
+      displayDate.textContent = m.toString();
+
+      getKey();
+
+      prev.addEventListener('click', function() {
+        m.subtract(1, 'days');
+        displayDate.textContent = m;
+        setKey();
+        getKey();
+      });
+
+      next.addEventListener('click', function() {
+        m.add(1, 'days');
+        displayDate.textContent = m;
+        setKey();
+        getKey();
+      });
+
+      customDateButton.addEventListener('click', function() {
+        var yearValue = yearInput.value;
+        var monthValue = monthInput.value;
+        var dateValue = dateInput.value;
+        m = moment(yearValue + monthValue + dateValue);
+        displayDate.textContent = m;
+        setKey();
+        getKey();
+      });
+
+      makePlans.addEventListener('click', function() {
+        momentObject.nine = prompt('plans for 9');
+        momentObject.ten = prompt('plans for 10');
+      });
+
+      send.addEventListener('click', function() {
+        localStorage.setItem(key, JSON.stringify(momentObject));
+        getKey();
+      });
+
+      //   get.addEventListener('click', function() {
+      //     momentObject = JSON.parse(localStorage.getItem(key));
+      //     alert(
+      //       'at 9 am you have to ' +
+      //         momentObject.nine +
+      //         ' and at 10am you have to ' +
+      //         momentObject.ten
+      //     );
+      //   });
+
+      function setKey() {
+        years = m.get('year').toString();
+        months =
+          getPadding((m.month() + 1).toString()) + (m.month() + 1).toString();
+        date = getPadding(m.date().toString()) + m.date().toString();
+        key = years + months + date;
+      }
+
+      function getKey() {
+        var plan = JSON.parse(localStorage.getItem(key));
+        if (!plan) {
+          today9.textContent = 'no plans';
+          today10.textContent = 'no plans';
+        } else {
+          if (!plan.nine) {
+            today9.textContent = 'no plans';
+          } else {
+            today9.textContent = plan.nine;
+          }
+          if (!plan.ten) {
+            today10.textContent = 'no plans';
+          } else {
+            today10.textContent = plan.ten;
+          }
+        }
+      }
+
+      today9.addEventListener('click', function() {
+        //set the key string to the date
+        setKey();
+        //get the user's input
+        var newInput = prompt('change it');
+        //set the property of the momentObject to be the user's input
+        momentObject.nine = newInput;
+        momentObject.ten = today10.textContent;
+        //set the storage object to be the current moment object
+        localStorage.setItem(key, JSON.stringify(momentObject));
+        //get the day planner entirely from storage
+        getKey();
+      });
+
+      today10.addEventListener('click', function() {
+        setKey();
+        var newInput = prompt('change it');
+        momentObject.ten = newInput;
+        momentObject.nine = today9.textContent;
+        localStorage.setItem(key, JSON.stringify(momentObject));
+        getKey();
+      });
+
+      function getPadding(num) {
+        return num < 10 ? '0' : '';
+      }
+    </script>
+  </body>
+</html>
