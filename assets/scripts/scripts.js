@@ -26,4 +26,15 @@ var momentObject = {};
 prev.on('click', function() {
   m.subtract(1, 'days');
   currentDateSpanEl.text(m.toString());
+  //   setKey();
+  //   getKey();
 });
+
+next.on('click', function() {
+  m.add(1, 'days');
+  currentDateSpanEl.text(m.toString());
+  //   setKey();
+  //   getKey();
+});
+
+customDateButton.on('click', function() {});
