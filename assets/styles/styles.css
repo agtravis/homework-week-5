@@ -130,3 +130,23 @@ footer p {
     height: 87%;
     margin: 5px;
 }
+
+.center {
+    text-align: center;
+}
+
+#current-date-p {
+    border-bottom: 1px solid #4e2217;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#date-selector {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+#select-month {
+    margin: 0 10px;
+}
