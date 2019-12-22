@@ -167,8 +167,21 @@ footer p {
   margin-top: 15px;
 }
 
-.period p {
+#day-elements p {
   border: 2px solid #4e2217;
   border-radius: 5px;
   padding: 10px;
+  color: #fefefe;
+}
+
+.past {
+  background-color: #4e2217;
+}
+
+.present {
+  background-color: #b96049;
+}
+
+.future {
+  background-color: #d1b9b3;
 }

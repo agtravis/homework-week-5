@@ -3,6 +3,9 @@ var selectMonth = $('#select-month');
 var selectDate = $('#select-date');
 var daysInMonth = 31;
 
+var newMoment = moment();
+newMoment = newMoment.get('year');
+
 for (var i = 1900; i <= 2100; ++i) {
   var newYearEl = $('<option>');
   newYearEl.val(i).text(i);
@@ -57,7 +60,3 @@ function selectTheMonth() {
   selectDate.empty();
   calcDaysInMonth();
 }
-
-// while (answerButtonsElement.firstChild) {
-//   answerButtonsElement.removeChild(answerButtonsElement.firstChild);
-// }
