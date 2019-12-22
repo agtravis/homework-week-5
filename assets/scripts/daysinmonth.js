@@ -1,3 +1,4 @@
+// $(document).ready(function() {
 var selectYear = $('#select-year');
 var selectMonth = $('#select-month');
 var selectDate = $('#select-date');
@@ -60,3 +61,4 @@ function selectTheMonth() {
   selectDate.empty();
   calcDaysInMonth();
 }
+// });
