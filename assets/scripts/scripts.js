@@ -12,6 +12,12 @@ $(document).ready(function() {
   var dateInput = selectDate;
   var customDateButton = $('#button-custom-date');
   var periods = $('.period');
+  var modalContainer = $('#modal-container');
+  var yourPlans = $('#your-plans');
+  var closePopup = $('#close-popup');
+  var focusPeriod = $('#focus-period');
+  var submitButton = $('#submit-plans');
+  var cancelButton = $('cancel-plans');
 
   var years = m.get('year').toString();
   var months = (m.month() + 1).toString();
