@@ -59,7 +59,10 @@ body {
 
 #main-container {
   border: 3px solid #4e2217;
+  border-radius: 10px;
   padding: 10px;
+  margin-bottom: 50px;
+  padding: 15px;
 }
 
 #main-row {
@@ -126,16 +129,41 @@ footer p {
   margin: 0;
 }
 
+#buttons-row {
+  text-align: center;
+}
+
+button {
+  border: 2px solid #4e2217;
+  background-color: #4e2217;
+  color: #fefefe;
+  border-radius: 5px;
+  padding: 10px 5px;
+  font-size: 1.3em;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #d1b9b3;
+  color: #4e2217;
+}
+
 .button {
-  width: 100%;
-  height: 87%;
-  margin: 5px;
+  width: 100px;
+  margin: 0;
+  height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .button {
+    width: 80%;
+  }
 }
 
 #button-custom-date {
-  width: 75%;
-  height: 74%;
-  margin: 5px;
+  width: 200px;
+  height: 82%;
 }
 
 #custom-date-button-div {
@@ -167,15 +195,38 @@ footer p {
   margin-top: 15px;
 }
 
-#day-elements p {
+#today-paragraph-title {
+  padding: 10px;
+  font-size: 1.3em;
+  color: #4e2217;
+  font-weight: 500;
+  border-top: 1px solid #4e2217;
+}
+
+#today-paragraph-instructions {
+  padding: 10px;
+  font-size: 1.3em;
+  color: #4e2217;
+  font-weight: 500;
+  border-top: 1px solid #4e2217;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+.period {
   border: 2px solid #4e2217;
   border-radius: 5px;
   padding: 10px;
   color: #fefefe;
+  cursor: pointer;
 }
 
 .past {
-  background-color: #4e2217;
+  background-color: #61281a;
+}
+
+.past:hover, .present:hover, .future:hover {
+  background-color: #bb7c1e;
 }
 
 .present {

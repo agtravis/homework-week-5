@@ -26,14 +26,14 @@ $(document).ready(function() {
 
   prev.on('click', function() {
     m.subtract(1, 'days');
-    currentDateSpanEl.text(m.toString());
+    currentDateSpanEl.text(m.toString()); // change to more user friendly
     setKey();
     getKey();
   });
 
   next.on('click', function() {
     m.add(1, 'days');
-    currentDateSpanEl.text(m.toString());
+    currentDateSpanEl.text(m.toString()); // change to more user friendly
     setKey();
     getKey();
   });
@@ -46,7 +46,7 @@ $(document).ready(function() {
       .year(yearValue)
       .month(monthValue)
       .date(dateValue);
-    currentDateSpanEl.text(m);
+    currentDateSpanEl.text(m.toString()); // change to more user friendly
     setKey();
     getKey();
   });
@@ -137,12 +137,6 @@ $(document).ready(function() {
       }
     }
   }
-
-  // for (var i = 0; i < periods.length; ++i) {
-  //   periods[i].on('click', function(event) {
-  //     clickOnAPeriod($(this).id);
-  //   });
-  // }
 
   periods.on('click', function() {
     clickOnAPeriod($(this).attr('id'));
