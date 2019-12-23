@@ -84,22 +84,32 @@ body {
   }
 }
 
+.hide {
+  /* display: none; */
+}
+
 #modal-container {
   position: absolute;
-  top: -50px;
+  margin: 0 auto;
+  top: 200px;
   width: 100%;
-  height: 250px;
+  height: 350px;
 }
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #689c8f;
+  background-color: #4e2217;
   color: white;
 }
 
 .modal-body {
   padding: 2px 16px;
-  height: 200px;
+  height: 240px;
+}
+
+.modal-body textarea {
+  width: 100%;
+  height: 50px;
 }
 
 .modal-content {
@@ -110,6 +120,12 @@ body {
   border: 1px solid #888;
   width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 footer {
@@ -193,6 +209,9 @@ button:hover {
 
 #day-elements {
   margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #today-paragraph-title {
