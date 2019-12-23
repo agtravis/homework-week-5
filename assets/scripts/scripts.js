@@ -17,7 +17,7 @@ $(document).ready(function() {
   var closePopup = $('#close-popup');
   var focusPeriod = $('#focus-period');
   var submitButton = $('#submit-plans');
-  var cancelButton = $('cancel-plans');
+  var cancelButton = $('#cancel-plans');
 
   var years = m.get('year').toString();
   var months = (m.month() + 1).toString();
@@ -152,6 +152,7 @@ $(document).ready(function() {
     setKey();
     for (var i = 0; i < periods.length; ++i) {
       if (periods[i].id === id) {
+        modalContainer.removeClass('hide');
         var newText = prompt('what now?', $('#today' + (i + 9)).text());
         $('#today' + (i + 9)).text(newText);
         momentObject['today' + (i + 9)] = $('#today' + (i + 9)).text();
@@ -162,4 +163,16 @@ $(document).ready(function() {
     localStorage.setItem(key, JSON.stringify(momentObject));
     getKey();
   }
+
+  closePopup.on('click', function() {
+    modalContainer.addClass('hide');
+  });
+
+  submitButton.on('click', function() {
+    modalContainer.addClass('hide');
+  });
+
+  cancelButton.on('click', function() {
+    modalContainer.addClass('hide');
+  });
 });
