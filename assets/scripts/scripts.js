@@ -33,18 +33,36 @@ $(document).ready(function() {
   setColors();
 
   prev.on('click', function() {
+    prevFunction();
+  });
+
+  $(document).on('keyup', function(event) {
+    console.log(event.key);
+    if (event.key === 'ArrowLeft') {
+      prevFunction();
+    }
+    if (event.key === 'ArrowRight') {
+      nextFunction();
+    }
+  });
+
+  function prevFunction() {
     m.subtract(1, 'days');
     currentDateSpanEl.text(m.toString()); // change to more user friendly
     setKey();
     getKey();
-  });
+  }
 
   next.on('click', function() {
+    nextFunction();
+  });
+
+  function nextFunction() {
     m.add(1, 'days');
     currentDateSpanEl.text(m.toString()); // change to more user friendly
     setKey();
     getKey();
-  });
+  }
 
   customDateButton.on('click', function() {
     var yearValue = yearInput.val();
