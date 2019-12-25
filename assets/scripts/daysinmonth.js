@@ -11,6 +11,9 @@ for (var i = 1900; i <= 2100; ++i) {
   var newYearEl = $('<option>');
   newYearEl.val(i).text(i);
   selectYear.append(newYearEl);
+  if (i === newMoment) {
+    newYearEl.attr('selected', 'selected');
+  }
 }
 
 calcDaysInMonth();

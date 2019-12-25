@@ -37,7 +37,6 @@ $(document).ready(function() {
   });
 
   $(document).on('keyup', function(event) {
-    console.log(event.key);
     if (event.key === 'ArrowLeft') {
       prevFunction();
     }
