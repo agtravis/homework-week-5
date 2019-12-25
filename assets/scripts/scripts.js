@@ -15,7 +15,6 @@ $(document).ready(function() {
   var modalContainer = $('#modal-container');
   var yourPlans = $('#your-plans');
   var closePopup = $('#close-popup');
-  var focusPeriod = $('#focus-period');
   var submitButton = $('#submit-plans');
   var cancelButton = $('#cancel-plans');
 
@@ -98,51 +97,67 @@ $(document).ready(function() {
         $(el).text('');
       }
     } else {
-      if (!plan.today9) {
-        $('#today9').text('');
-      } else {
-        $('#today9').text(plan.today9);
+      // var keys = Object.keys(plan);
+      var values = Object.values(plan);
+      console.log(values.length);
+      for (var i = 0; i < values.length; ++i) {
+        if (values[i] === '') {
+          $('#today' + (i + 9)).text('');
+        } else {
+          $('#today' + (i + 9)).text(values[i]);
+        }
       }
-      if (!plan.today10) {
-        $('#today10').text('');
-      } else {
-        $('#today10').text(plan.today10);
-      }
-      if (!plan.today11) {
-        $('#today11').text('');
-      } else {
-        $('#today11').text(plan.today11);
-      }
-      if (!plan.today12) {
-        $('#today12').text('');
-      } else {
-        $('#today12').text(plan.today12);
-      }
-      if (!plan.today13) {
-        $('#today13').text('');
-      } else {
-        $('#today13').text(plan.today13);
-      }
-      if (!plan.today14) {
-        $('#today14').text('');
-      } else {
-        $('#today14').text(plan.today14);
-      }
-      if (!plan.today15) {
-        $('#today15').text('');
-      } else {
-        $('#today15').text(plan.today15);
-      }
-      if (!plan.today16) {
-        $('#today16').text('');
-      } else {
-        $('#today16').text(plan.today16);
-      }
-      if (!plan.today17) {
-        $('#today17').text('');
-      } else {
-        $('#today17').text(plan.today17);
-      }
+      // if (!plan['today' + (i + 9)]) {
+      //   $('#today' + (i + 9)).text('');
+      // } else {
+      //   console.log(plan['today' + (i + 9)]);
+      //   $('#today' + (i + 9)).text(plan['today' + (i + 9)]);
+      // }
+      // if (!plan.[today9]) {
+      //   $('#today9').text('');
+      // } else {
+      //   $('#today9').text(plan.today9);
+      // }
+      // if (!plan.today10) {
+      //   $('#today10').text('');
+      // } else {
+      //   $('#today10').text(plan.today10);
+      // }
+      // if (!plan.today11) {
+      //   $('#today11').text('');
+      // } else {
+      //   $('#today11').text(plan.today11);
+      // }
+      // if (!plan.today12) {
+      //   $('#today12').text('');
+      // } else {
+      //   $('#today12').text(plan.today12);
+      // }
+      // if (!plan.today13) {
+      //   $('#today13').text('');
+      // } else {
+      //   $('#today13').text(plan.today13);
+      // }
+      // if (!plan.today14) {
+      //   $('#today14').text('');
+      // } else {
+      //   $('#today14').text(plan.today14);
+      // }
+      // if (!plan.today15) {
+      //   $('#today15').text('');
+      // } else {
+      //   $('#today15').text(plan.today15);
+      // }
+      // if (!plan.today16) {
+      //   $('#today16').text('');
+      // } else {
+      //   $('#today16').text(plan.today16);
+      // }
+      // if (!plan.today17) {
+      //   $('#today17').text('');
+      // } else {
+      //   $('#today17').text(plan.today17);
+      // }
     }
   }
 
