@@ -74,7 +74,7 @@ $(document).ready(function() {
 
   function setColors() {
     var currentMoment = moment();
-    // currentMoment.hour(12); //remove - for texting after 6pm purposes!!
+    // currentMoment.hour(12); // for coding before 9am / after 6pm purposes!!
     var currentHour = currentMoment.hour();
     for (var i = 0; i < periods.length; ++i) {
       var idNum = periods[i].id;
@@ -127,6 +127,16 @@ $(document).ready(function() {
   });
 
   submitButton.on('click', function() {
+    submitFunction();
+  });
+
+  yourPlans.on('keyup', function(event) {
+    if (event.key === 'Enter') {
+      submitFunction();
+    }
+  });
+
+  function submitFunction() {
     setKey();
     var newText = yourPlans.val();
     $(currentSpanId).text(newText);
@@ -136,7 +146,7 @@ $(document).ready(function() {
     modalContainer.addClass('hide');
     localStorage.setItem(key, JSON.stringify(momentObject));
     getKey();
-  });
+  }
 
   cancelButton.on('click', function() {
     setKey();
