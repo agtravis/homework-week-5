@@ -24,33 +24,37 @@ function calcDaysInMonth() {
 }
 
 selectYear.on('change', function() {
-  selectDate.empty();
+  // alert(selectYear.val());
   selectTheMonth();
 });
 
-selectMonth.on('change', selectTheMonth);
+selectMonth.on('change', function() {
+  // alert(selectMonth.val());
+  selectTheMonth();
+});
 
 function selectTheMonth() {
+  selectDate.empty();
   var month = selectMonth.val();
   if (
-    month === 'January' ||
-    month === 'March' ||
-    month === 'May' ||
-    month === 'July' ||
-    month === 'August' ||
-    month === 'October' ||
-    month === 'December'
+    month === '00' ||
+    month === '02' ||
+    month === '04' ||
+    month === '06' ||
+    month === '07' ||
+    month === '09' ||
+    month === '11'
   ) {
     daysInMonth = 31;
   } else if (
-    month === 'April' ||
-    month === 'June' ||
-    month === 'September' ||
-    month === 'November'
+    month === '03' ||
+    month === '05' ||
+    month === '08' ||
+    month === '10'
   ) {
     daysInMonth = 30;
   } else if (
-    month === 'February' &&
+    month === '01' &&
     selectYear.val() % 4 === 0 &&
     selectYear.val() % 400 === 0
   ) {
@@ -58,7 +62,6 @@ function selectTheMonth() {
   } else {
     daysInMonth = 28;
   }
-  selectDate.empty();
   calcDaysInMonth();
 }
 // });

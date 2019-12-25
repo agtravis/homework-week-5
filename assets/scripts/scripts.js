@@ -25,6 +25,8 @@ $(document).ready(function() {
   var key = years + months + date;
 
   var momentObject = {};
+  var currentId = '';
+  var currentSpanId = '';
 
   setKey();
   getKey();
@@ -145,34 +147,54 @@ $(document).ready(function() {
   }
 
   periods.on('click', function() {
-    clickOnAPeriod($(this).attr('id'));
-  });
-
-  function clickOnAPeriod(id) {
-    setKey();
-    for (var i = 0; i < periods.length; ++i) {
-      if (periods[i].id === id) {
-        modalContainer.removeClass('hide');
-        var newText = prompt('what now?', $('#today' + (i + 9)).text());
-        $('#today' + (i + 9)).text(newText);
-        momentObject['today' + (i + 9)] = $('#today' + (i + 9)).text();
-      } else {
-        momentObject['today' + (i + 9)] = $('#today' + (i + 9)).text();
-      }
-    }
-    localStorage.setItem(key, JSON.stringify(momentObject));
-    getKey();
-  }
-
-  closePopup.on('click', function() {
-    modalContainer.addClass('hide');
+    currentId = '#' + $(this).attr('id');
+    currentSpanId = currentId.slice(0, 6) + currentId.slice(16);
+    modalContainer.removeClass('hide');
+    yourPlans.val($(currentSpanId).text());
+    yourPlans.focus();
   });
 
   submitButton.on('click', function() {
+    setKey();
+    var newText = yourPlans.val();
+    $(currentSpanId).text(newText);
+    for (var i = 0; i < periods.length; ++i) {
+      momentObject['today' + (i + 9)] = $('#today' + (i + 9)).text();
+    }
     modalContainer.addClass('hide');
+    localStorage.setItem(key, JSON.stringify(momentObject));
+    getKey();
   });
 
   cancelButton.on('click', function() {
+    setKey();
+    var newText = '';
+    $(currentSpanId).text(newText);
+    for (var i = 0; i < periods.length; ++i) {
+      momentObject['today' + (i + 9)] = $('#today' + (i + 9)).text();
+    }
+    modalContainer.addClass('hide');
+    localStorage.setItem(key, JSON.stringify(momentObject));
+    getKey();
+  });
+
+  // function clickOnAPeriod(id) {
+  //   setKey();
+  //   for (var i = 0; i < periods.length; ++i) {
+  //     if (periods[i].id === id) {
+  //       modalContainer.removeClass('hide');
+  //       var newText = prompt('what now?', $('#today' + (i + 9)).text());
+  //       $('#today' + (i + 9)).text(newText);
+  //       momentObject['today' + (i + 9)] = $('#today' + (i + 9)).text();
+  //     } else {
+  //       momentObject['today' + (i + 9)] = $('#today' + (i + 9)).text();
+  //     }
+  //   }
+  //   localStorage.setItem(key, JSON.stringify(momentObject));
+  //   getKey();
+  // }
+
+  closePopup.on('click', function() {
     modalContainer.addClass('hide');
   });
 });
