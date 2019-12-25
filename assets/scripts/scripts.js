@@ -3,7 +3,9 @@ $(document).ready(function() {
 
   var m = moment();
 
-  currentDateSpanEl.text(m.toString()); // change to more user friendly
+  currentDateSpanEl.text(
+    m.get('month') + 1 + '/' + m.get('date') + '/' + m.get('year')
+  );
 
   var prev = $('#prev');
   var next = $('#next');
@@ -47,7 +49,9 @@ $(document).ready(function() {
 
   function prevFunction() {
     m.subtract(1, 'days');
-    currentDateSpanEl.text(m.toString()); // change to more user friendly
+    currentDateSpanEl.text(
+      m.get('month') + 1 + '/' + m.get('date') + '/' + m.get('year')
+    );
     setKey();
     getKey();
   }
@@ -58,7 +62,9 @@ $(document).ready(function() {
 
   function nextFunction() {
     m.add(1, 'days');
-    currentDateSpanEl.text(m.toString()); // change to more user friendly
+    currentDateSpanEl.text(
+      m.get('month') + 1 + '/' + m.get('date') + '/' + m.get('year')
+    );
     setKey();
     getKey();
   }
@@ -71,7 +77,9 @@ $(document).ready(function() {
       .year(yearValue)
       .month(monthValue)
       .date(dateValue);
-    currentDateSpanEl.text(m.toString()); // change to more user friendly
+    currentDateSpanEl.text(
+      m.get('month') + 1 + '/' + m.get('date') + '/' + m.get('year')
+    );
     setKey();
     getKey();
   });
@@ -115,7 +123,6 @@ $(document).ready(function() {
       }
     } else {
       var values = Object.values(plan);
-      console.log(values.length);
       for (var i = 0; i < values.length; ++i) {
         if (values[i] === '') {
           $('#today' + (i + 9)).text('');
