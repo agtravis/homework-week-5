@@ -104,12 +104,9 @@ body {
 
 .modal-body {
   padding: 2px 16px;
-  height: 240px;
-}
-
-.modal-body textarea {
-  width: 100%;
-  height: 50px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-content {
@@ -126,6 +123,11 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: auto;
+}
+
+#your-plans {
+  width: 100%;
 }
 
 footer {
