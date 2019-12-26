@@ -27,12 +27,10 @@ function calcDaysInMonth() {
 }
 
 selectYear.on('change', function() {
-  // alert(selectYear.val());
   selectTheMonth();
 });
 
 selectMonth.on('change', function() {
-  // alert(selectMonth.val());
   selectTheMonth();
 });
 
