@@ -12,7 +12,7 @@ The date can be changed to consecutive days either by clicking on the Previous o
 
 A date can also be chosen from the selection boxes. The year will always default to the current year, but the month and date will be set to January 1st. Choosing the date from the selection boxes means the user is unable to enter a false date, or a date in the wrong format, and the days of the month is calculated when the user changes month. Leap years are accounted for, and the fact that leap years do not occur at the turn of centuries unless that century is divisible by 400 (i.e. 1900 and 2100 are not leap years, but 2000 is).
 
-![time-slot](https://github.com/agtravis/homework-week-5/blob/master/assets/images/time-slot.PNG)
+![time-slot](https://github.com/agtravis/homework-week-5/blob/master/assets/images/time-slot.png)
 
 ![plan-input](https://github.com/agtravis/homework-week-5/blob/master/assets/images/plan-input.PNG)
 
