@@ -99,7 +99,7 @@ $(document).ready(function() {
 
   function setColors() {
     var currentMoment = moment();
-    // currentMoment.hour(12); // for coding before 9am / after 6pm purposes!!
+    // currentMoment.hour(12); // make comment a line of code for coding and testing before 9am / after 6pm purposes!!
     var currentHour = currentMoment.hour();
     for (var i = 0; i < periods.length; ++i) {
       var idNum = periods[i].id;
