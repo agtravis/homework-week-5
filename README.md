@@ -1,5 +1,7 @@
 # Day Planner
 
+[Deployed Application](https://agtravis.github.io/homework-week-5/index.html)
+
 ## How to use this app
 
 ![choose-date](https://github.com/agtravis/homework-week-5/blob/master/assets/images/choose-date.PNG)
